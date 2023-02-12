@@ -1,9 +1,14 @@
 package com.example.coacharea.ui.details
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -15,7 +20,7 @@ import com.example.coacharea.R
 import com.example.coacharea.databinding.FragmentClientDetailsBinding
 
 
-class ClientDetailsFragment : Fragment(), MenuProvider {
+class ClientDetailsFragment : DialogFragment() {
 
     private var _binding: FragmentClientDetailsBinding? = null
     private val binding get() = _binding!!
@@ -30,10 +35,22 @@ class ClientDetailsFragment : Fragment(), MenuProvider {
     ): View {
         _binding = FragmentClientDetailsBinding.inflate(inflater, container, false)
 
+        val radius = resources.getDimensionPixelSize(R.dimen.dialog_corner_radius)
+
+        val drawable = GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            setColor(Color.WHITE)
+            cornerRadius = radius.toFloat()
+        }
+
+        binding.root.background = drawable
+
         binding.client = args.client
 
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        binding.button.setOnClickListener {
+            viewModel.deleteClient(binding.client!!)
+            findNavController().popBackStack()
+        }
 
         if (args.client.imageUri.isNotEmpty()) {
             Glide.with(this)
@@ -46,25 +63,4 @@ class ClientDetailsFragment : Fragment(), MenuProvider {
         return binding.root
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        return menuInflater.inflate(R.menu.meno_details, menu)
-    }
-
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        when (menuItem.itemId) {
-            R.id.action_edit -> {
-                findNavController().navigate(
-                    ClientDetailsFragmentDirections.actionClientDetailsFragmentToEditFragment(
-                        args.client
-                    )
-                )
-            }
-            R.id.action_delete -> {
-                viewModel.deleteClient(args.client)
-                findNavController().popBackStack()
-            }
-        }
-
-        return true
-    }
 }

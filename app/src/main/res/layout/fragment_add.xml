@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
         tools:context=".ui.add.AddFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -39,7 +40,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_client"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_marginTop="8dp"
             android:padding="4dp"
             android:src="@drawable/avatar_svgrepo_com"
@@ -52,7 +53,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_name"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -75,7 +75,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_number"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -100,7 +99,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_age"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -127,7 +125,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_length"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -153,7 +150,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_weight"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -177,7 +173,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_muscle"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -203,7 +198,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_fat"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -229,7 +223,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_disease"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

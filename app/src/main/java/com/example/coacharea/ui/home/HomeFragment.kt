@@ -36,8 +36,7 @@ class HomeFragment : Fragment() {
                     super.onScrolled(recyclerView, dx, dy)
                     if (dy > hideViewThreshold && floatingActionButton.visibility == View.VISIBLE) {
                         floatingActionButton.hide()
-                    }
-                    else if (dy < -hideViewThreshold && floatingActionButton.visibility != View.VISIBLE) {
+                    } else if (dy < -hideViewThreshold && floatingActionButton.visibility != View.VISIBLE) {
                         floatingActionButton.show()
                     }
                 }
@@ -50,9 +49,7 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.clients.collect {
-                if (it.isNotEmpty()) {
-                    adapter.submitList(it)
-                }
+                adapter.submitList(it)
             }
         }
         return binding.root

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.coacharea.ui.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_addFragment"
@@ -26,14 +26,14 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.coacharea.ui.add.AddFragment"
-        android:label="fragment_add"
+        android:label="Add"
         tools:layout="@layout/fragment_add" >
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/clientDetailsFragment"
         android:name="com.example.coacharea.ui.details.ClientDetailsFragment"
-        android:label="fragment_client_details"
+        android:label="Client"
         tools:layout="@layout/fragment_client_details">
         <argument
             android:name="client"
@@ -45,11 +45,11 @@
                 android:name="client"
                 app:argType="com.example.domain.entity.Client" />
         </action>
-    </fragment>
+    </dialog>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.coacharea.ui.edit.EditFragment"
-        android:label="fragment_edit"
+        android:label="Edit"
         tools:layout="@layout/fragment_edit" >
         <argument
             android:name="client"

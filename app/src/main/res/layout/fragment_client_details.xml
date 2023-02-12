@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="client"
             type="com.example.domain.entity.Client" />
@@ -11,27 +12,41 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:padding="16dp"
         tools:context=".ui.details.ClientDetailsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".50" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:layout_marginTop="16dp"
+            android:text="@{client.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/iv_client"
             app:layout_constraintStart_toStartOf="@+id/iv_client"
-            app:layout_constraintTop_toBottomOf="@+id/iv_client" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_client"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="22 Years old"
+            android:text="@{String.valueOf(client.age)}"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:text="Age" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_client"
@@ -48,16 +63,13 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_weight"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true"
             app:contentPadding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_length">
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/cv_muscles">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -67,44 +79,44 @@
                     android:id="@+id/tv_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="@{String.valueOf(client.weight)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_weight_word" />
+                    app:layout_constraintEnd_toEndOf="@+id/tv_weight_word"
+                    app:layout_constraintStart_toStartOf="@+id/tv_weight_word"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_weight_word"
+                    tools:text="a7a" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_weight"
+                    android:src="@drawable/weight"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_weight_word"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:src="@drawable/weight" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_weight_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Weight"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_fats"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:cardPreventCornerOverlap="false"
+            android:layout_marginTop="16dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
@@ -116,45 +128,46 @@
                     android:id="@+id/tv_fats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="@{String.valueOf(client.fat)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_fats_word" />
+                    app:layout_constraintEnd_toEndOf="@+id/iv_fats"
+                    app:layout_constraintStart_toStartOf="@+id/iv_fats"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fats_word"
+                    tools:text="a7a" />
 
                 <ImageView
                     android:id="@+id/iv_fats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_fats"
+                    android:src="@drawable/fat"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_fats_word"
-                    tools:src="@drawable/fat" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_fats_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Fats"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_fats" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_muscles"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:cardPreventCornerOverlap="false"
+            android:layout_marginTop="16dp"
             app:cardUseCompatPadding="true"
             app:contentPadding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_fats">
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -164,46 +177,45 @@
                     android:id="@+id/tv_muscles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="@{String.valueOf(client.muscle)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_muscles_word" />
+                    app:layout_constraintEnd_toEndOf="@+id/iv_weight"
+                    app:layout_constraintStart_toStartOf="@+id/iv_weight"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_muscles_word"
+                    tools:text="a7a" />
 
                 <ImageView
                     android:id="@+id/iv_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_muscles"
+                    android:src="@drawable/muscle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_muscles_word"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:src="@drawable/muscle" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_muscles_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Muscles"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toEndOf="@+id/iv_weight"
+                    app:layout_constraintStart_toStartOf="@+id/iv_weight"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_weight" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_length"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true"
             app:contentPadding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_muscles">
+            app:layout_constraintTop_toBottomOf="@+id/cv_fats">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -213,33 +225,57 @@
                     android:id="@+id/tv_length"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="@{String.valueOf(client.length)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_length_word" />
+                    app:layout_constraintEnd_toEndOf="@+id/iv_length"
+                    app:layout_constraintStart_toStartOf="@+id/iv_length"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_length_word"
+                    tools:text="a7a" />
 
                 <ImageView
                     android:id="@+id/iv_length"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_length"
+                    android:src="@drawable/length"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_length_word"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:src="@drawable/length" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_length_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Length"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toEndOf="@+id/iv_length"
+                    app:layout_constraintStart_toStartOf="@+id/iv_length"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_length" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Delete"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/cv_length"
+            app:layout_constraintTop_toBottomOf="@+id/cv_length" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Save"
+            app:layout_constraintEnd_toEndOf="@+id/cv_weight"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/cv_weight" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
